@@ -1,0 +1,229 @@
+
+/* =====================================
+   WEDDING COVER - CLEAN VERSION
+   ===================================== */
+
+.cover-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #383632;
+  color: #f4f0e8;
+  text-align: center;
+}
+
+/* FOTO COVER */
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background-image: url("/images/cover.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  transform: scale(1);
+}
+
+/* GRADIENT */
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.65)
+  );
+
+  pointer-events: none;
+}
+
+/* CONTENT */
+
+.cover-inner {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 500px;
+  padding: 25px;
+}
+
+.cover-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 28px;
+}
+
+.cover-names {
+  font-family: Georgia, serif;
+  font-size: clamp(56px, 12vw, 85px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.cover-names span {
+  display: block;
+  font-size: 48px;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.cover-date {
+  margin-top: 30px;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+
+.cover-recipient {
+  margin: 65px 0 25px;
+}
+
+.cover-recipient p {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.cover-recipient h3 {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin: 5px 0;
+  overflow-wrap: anywhere;
+}
+
+.cover-open-button {
+  position: relative;
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 28px;
+
+  background: rgba(245, 240, 232, 0.12);
+  color: white;
+
+  border: 1px solid #f4f0e8;
+  border-radius: 0;
+
+  font-size: 12px;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.cover-open-button:disabled {
+  cursor: default;
+}
+
+.cover-bottom {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  width: 100%;
+
+  font-size: 9px;
+  letter-spacing: 4px;
+  opacity: 0.8;
+}
+
+/* =====================================
+   OPENING ANIMATION
+   ===================================== */
+
+.cover-opening {
+  pointer-events: none;
+  animation: coverExit 1.25s ease-in-out forwards;
+}
+
+.cover-opening .cover-bg {
+  animation: coverZoom 1.25s ease-out forwards;
+}
+
+.cover-opening .cover-inner,
+.cover-opening .cover-bottom {
+  animation: coverTextExit 0.7s ease-out forwards;
+}
+
+@keyframes coverExit {
+  0%, 40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes coverZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes coverTextExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .cover-names {
+    font-size: 58px;
+  }
+
+  .cover-inner {
+    padding: 20px;
+  }
+
+  .cover-recipient {
+    margin-top: 50px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-opening,
+  .cover-opening .cover-bg,
+  .cover-opening .cover-inner,
+  .cover-opening .cover-bottom {
+    animation-duration: 0.01ms;
+  }
+}

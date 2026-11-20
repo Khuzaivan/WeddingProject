@@ -1,0 +1,94 @@
+
+.wedding-gift {
+  padding: 110px 24px;
+  background: #77756e;
+  color: #f4f0e8;
+  text-align: center;
+}
+
+.gift-heading > svg {
+  margin: 0 auto 25px;
+}
+
+.gift-heading > p {
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.gift-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 6vw, 62px);
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.gift-heading span {
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.gift-description {
+  max-width: 500px;
+  margin: 35px auto;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.gift-card {
+  max-width: 480px;
+  margin: 45px auto 0;
+  padding: 40px 25px;
+  border: 1px solid #ddd8cf;
+  background: rgba(56, 54, 50, 0.18);
+}
+
+.gift-bank {
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+.gift-card h3 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(24px, 5vw, 36px);
+  margin: 20px 0 10px;
+  overflow-wrap: anywhere;
+}
+
+.gift-card > p {
+  font-size: 13px;
+}
+
+.gift-copy-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+  padding: 13px 25px;
+  border: 1px solid #f4f0e8;
+  background: transparent;
+  color: #f4f0e8;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.gift-copy-button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.gift-note {
+  font-size: 11px;
+  margin-top: 25px;
+  opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  .wedding-gift {
+    padding: 75px 20px;
+  }
+
+  .gift-card {
+    padding: 30px 20px;
+  }
+}

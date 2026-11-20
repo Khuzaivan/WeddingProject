@@ -1,0 +1,86 @@
+
+.wedding-closing {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 100px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url("/images/cover.jpeg");
+
+  background-position: center;
+  background-size: cover;
+  background-color: #383632;
+
+  color: #f4f0e8;
+  text-align: center;
+}
+
+.closing-content {
+  position: relative;
+  max-width: 520px;
+}
+
+.closing-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.closing-content h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(55px, 9vw, 90px);
+  font-weight: 400;
+  margin: 25px 0;
+}
+
+.closing-message {
+  font-size: 14px;
+  line-height: 2;
+  margin: 25px auto;
+}
+
+.closing-line {
+  height: 1px;
+  width: 90px;
+  background: #ddd8cf;
+  margin: 45px auto;
+}
+
+.closing-content h3 {
+  font-family: Georgia, serif;
+  font-size: clamp(35px, 6vw, 55px);
+  font-weight: 400;
+}
+
+.closing-date {
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-top: 15px;
+}
+
+.closing-content > svg {
+  margin: 30px auto 0;
+}
+
+@media (max-width: 600px) {
+  .wedding-closing {
+    padding: 75px 22px;
+  }
+}
+
+
+/* GLOBAL BACKGROUND OVERRIDE */
+
+.wedding-closing {
+  background-image: none;
+  background-color: transparent;
+}

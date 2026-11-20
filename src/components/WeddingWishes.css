@@ -1,0 +1,317 @@
+
+/* =====================================
+   WEDDING WISHES SECTION
+   ===================================== */
+
+.wishes-section {
+  background: #e9e4db;
+  color: #383632;
+  padding: 110px 24px;
+}
+
+/* HEADER */
+
+.wishes-heading {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.wishes-heading > svg {
+  display: block;
+  margin: 0 auto 25px;
+}
+
+.wishes-heading > p {
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.wishes-heading h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 6vw, 62px);
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.wishes-heading span {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #77756e;
+  font-size: 16px;
+}
+
+/* FORM CONTAINER */
+
+.wishes-form-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 45px;
+
+  background: #f4f0e8;
+  border: 1px solid #c8c2b7;
+}
+
+.wishes-form-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.wishes-form-heading h3 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+  margin: 0 0 15px;
+}
+
+.wishes-form-heading p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #77756e;
+}
+
+/* INPUTS */
+
+.wishes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.wishes-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wishes-form-group label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.wishes-form-group input,
+.wishes-form-group select,
+.wishes-form-group textarea {
+  width: 100%;
+  padding: 15px;
+
+  background: #fffdf9;
+  color: #383632;
+
+  border: 1px solid #c8c2b7;
+  border-radius: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.wishes-form-group input:focus,
+.wishes-form-group select:focus,
+.wishes-form-group textarea:focus {
+  border-color: #77756e;
+}
+
+.wishes-form-group textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.7;
+}
+
+/* BUTTON */
+
+.wishes-submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px 24px;
+  width: 100%;
+
+  background: #383632;
+  color: #f4f0e8;
+
+  border: 1px solid #383632;
+
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.wishes-submit-button:hover {
+  background: #77756e;
+  border-color: #77756e;
+}
+
+.wishes-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  color: #4f7257;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* WISHES LIST */
+
+.wishes-list-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 75px auto 0;
+}
+
+.wishes-list-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wishes-list-heading > svg {
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.wishes-list-heading h3 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.wishes-list-heading p {
+  font-size: 12px;
+  color: #77756e;
+}
+
+.wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* WISH CARD */
+
+.wishes-card {
+  padding: 25px;
+  background: #f4f0e8;
+  border: 1px solid #c8c2b7;
+}
+
+.wishes-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wishes-card h4 {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.wishes-card > p {
+  font-size: 13px;
+  line-height: 1.9;
+  margin: 18px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.wishes-card small {
+  font-size: 11px;
+  color: #77756e;
+}
+
+/* ATTENDANCE BADGES */
+
+.attendance-badge {
+  padding: 6px 11px;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+
+.attending {
+  background: #dfe8dc;
+  color: #49644d;
+}
+
+.not-attending {
+  background: #e9ded9;
+  color: #805b50;
+}
+
+/* EMPTY STATE */
+
+.wishes-empty {
+  padding: 50px 25px;
+  text-align: center;
+  background: #f4f0e8;
+  border: 1px solid #c8c2b7;
+}
+
+.wishes-empty svg {
+  margin: 0 auto 15px;
+  color: #77756e;
+}
+
+.wishes-empty p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #77756e;
+  font-size: 15px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+  .wishes-section {
+    padding: 75px 20px;
+  }
+
+  .wishes-heading {
+    margin-bottom: 45px;
+  }
+
+  .wishes-form-container {
+    padding: 30px 20px;
+  }
+
+  .wishes-form-heading h3 {
+    font-size: 30px;
+  }
+
+  .wishes-list-container {
+    margin-top: 55px;
+  }
+
+  .wishes-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .wishes-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .wishes-form-container {
+    padding: 25px 15px;
+  }
+}

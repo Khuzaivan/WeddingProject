@@ -1,0 +1,380 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Allura&display=swap");
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+
+.wedding-hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: transparent;
+  color: #f8f2e9;
+
+  text-align: center;
+}
+
+/* =========================================
+   BACKGROUND OVERLAY
+   ========================================= */
+
+.wedding-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.2)
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   MAIN CONTENT
+   POSISI TETAP DI TENGAH HERO
+   ========================================= */
+
+.wedding-hero__content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 800px;
+  min-height: 100svh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 90px 20px 140px;
+  margin: 0;
+
+  text-align: center;
+}
+
+/* =========================================
+   THE WEDDING OF
+   ========================================= */
+
+.wedding-hero__label {
+  width: 100%;
+
+  margin: 0 0 18px;
+  padding: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 1.4vw, 14px);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+  text-align: center;
+
+  color: #f8f2e9;
+}
+
+/* =========================================
+   INITIALS P A - ALLURA
+   ========================================= */
+
+.wedding-hero__initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  max-width: 100%;
+
+  gap: 0;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: "Allura", cursive;
+  font-size: clamp(100px, 22vw, 190px);
+  font-weight: 400;
+  font-style: normal;
+
+  line-height: 0.85;
+  letter-spacing: 0;
+
+  color: #f8f2e9;
+
+  /* Koreksi titik tengah visual font Allura */
+  transform: translateX(-10px);
+}
+
+.wedding-hero__initials span {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  line-height: inherit;
+  font: inherit;
+  color: inherit;
+}
+
+/* =========================================
+   WEDDING DATE
+   ========================================= */
+
+.wedding-hero__date {
+  width: 100%;
+
+  /* Mendekatkan tanggal ke bentuk huruf Allura */
+  margin: 22px 0 0;
+  padding: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(12px, 2.5vw, 17px);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: 0.35em;
+
+  white-space: nowrap;
+  text-align: center;
+
+  color: #f8f2e9;
+}
+
+/* =========================================
+   YOU'RE INVITED
+   TETAP DI BAGIAN BAWAH
+   ========================================= */
+
+.wedding-hero__tagline {
+  position: absolute;
+  z-index: 3;
+
+  bottom: 82px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: calc(100% - 32px);
+  max-width: 700px;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 2.5vw, 14px);
+  font-weight: 400;
+
+  line-height: 1.6;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+
+  text-align: center;
+  color: #f8f2e9;
+}
+
+/* =========================================
+   WITH LOVE AND BLESSINGS
+   ========================================= */
+
+.wedding-hero__footer {
+  position: absolute;
+  z-index: 3;
+
+  bottom: 30px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: calc(100% - 32px);
+  max-width: 700px;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: Arial, sans-serif;
+  font-size: clamp(11px, 2vw, 14px);
+  font-weight: 400;
+
+  line-height: 1.5;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+
+  text-align: center;
+  color: #f8f2e9;
+}
+
+/* =========================================
+   TABLET / MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .wedding-hero__content {
+    padding: 100px 18px 110px;
+  }
+
+  .wedding-hero__label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    margin-bottom: 16px;
+  }
+
+  .wedding-hero__initials {
+    font-size: clamp(88px, 24vw, 140px);
+    gap: 0;
+
+    /* Koreksi titik tengah di HP */
+    transform: translateX(-7px);
+  }
+
+  .wedding-hero__date {
+    margin-top: 18px;
+
+    font-size: 13px;
+    letter-spacing: 0.35em;
+  }
+
+  .wedding-hero__tagline {
+    bottom: 76px;
+
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+
+  .wedding-hero__footer {
+    bottom: 28px;
+
+    font-size: 11px;
+    letter-spacing: 0.26em;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 420px) {
+
+  .wedding-hero__content {
+    padding: 90px 14px 110px;
+  }
+
+  .wedding-hero__label {
+    margin-bottom: 14px;
+  }
+
+  .wedding-hero__initials {
+    font-size: clamp(88px, 24vw, 120px);
+    gap: 0;
+
+    transform: translateX(-5px);
+  }
+
+  .wedding-hero__date {
+    margin-top: 16px;
+
+    font-size: 12px;
+    letter-spacing: 0.27em;
+  }
+
+  .wedding-hero__tagline {
+    bottom: 80px;
+
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  .wedding-hero__footer {
+    bottom: 28px;
+
+    font-size: 10px;
+    letter-spacing: 0.25em;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 360px) {
+
+  .wedding-hero__initials {
+    font-size: 88px;
+    transform: translateX(-4px);
+  }
+
+  .wedding-hero__date {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
+
+  .wedding-hero__tagline {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .wedding-hero__footer {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+}
+
+/* =========================================
+   LANDSCAPE / SHORT SCREEN
+   ========================================= */
+
+@media (max-height: 600px) {
+
+  .wedding-hero__content {
+    padding: 35px 14px 110px;
+  }
+
+  .wedding-hero__initials {
+    font-size: clamp(75px, 13vw, 115px);
+  }
+
+  .wedding-hero__label {
+    margin-bottom: 8px;
+  }
+
+  .wedding-hero__date {
+    margin-top: 12px;
+  }
+
+  .wedding-hero__tagline {
+    bottom: 65px;
+  }
+
+  .wedding-hero__footer {
+    bottom: 20px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .wedding-hero *,
+  .wedding-hero *::before,
+  .wedding-hero *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
