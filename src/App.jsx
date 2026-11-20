@@ -16,8 +16,8 @@ import LoveStory from "./components/LoveStory";
 import WeddingGift from "./components/WeddingGift";
 import WeddingWishes from "./components/WeddingWishes";
 import Closing from "./components/Closing";
+import BackgroundSlideshow from "./components/BackgroundSlideshow";
 
-// STYLES
 import "./App.css";
 
 // =========================================
@@ -30,77 +30,61 @@ const COVER_FALLBACK_MS = 2000;
 
 function App() {
   // =========================================
-  // STATE
+  // STATE & REFS
   // =========================================
 
   const [isOpened, setIsOpened] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // =========================================
-  // REFS
-  // =========================================
-
   const audioRef = useRef(null);
   const openingRef = useRef(false);
 
-  // Menyimpan status musik sebelum keluar tab
   const shouldResumeRef = useRef(false);
-
-  // Mencegah pause berulang mengubah status resume
   const pausedByVisibilityRef = useRef(false);
 
   // =========================================
-  // AUTO PAUSE & RESUME MUSIC
+  // AUTO PAUSE / RESUME MUSIC
   // =========================================
 
   useEffect(() => {
-    // ---------------------------------------
-    // KETIKA PENGGUNA MENINGGALKAN TAB
-    // ---------------------------------------
-
     function pauseWhenHidden() {
       const audio = audioRef.current;
 
       if (!audio) return;
-
-      // Jangan menimpa status resume kalau
-      // event hidden/pagehide terpanggil dua kali.
       if (pausedByVisibilityRef.current) return;
 
-      // Ingat apakah musik sedang berjalan.
+      // Ingat apakah musik sedang dimainkan.
       shouldResumeRef.current = !audio.paused;
 
       pausedByVisibilityRef.current = true;
 
-      // Pause tanpa reset posisi lagu.
+      // Jangan reset currentTime.
       audio.pause();
-
       setIsPlaying(false);
     }
-
-    // ---------------------------------------
-    // KETIKA PENGGUNA KEMBALI KE TAB
-    // ---------------------------------------
 
     function resumeWhenVisible() {
       const audio = audioRef.current;
 
       if (!audio) return;
 
-      // Tab sudah aktif kembali.
-      pausedByVisibilityRef.current = false;
-
-      // Jangan otomatis play kalau sebelumnya
-      // pengguna sudah pause secara manual.
-      if (!shouldResumeRef.current) return;
-
-      // Pastikan tab benar-benar terlihat.
       if (document.visibilityState !== "visible") {
         return;
       }
 
-      // Reset penanda resume agar tidak
-      // melakukan play berulang.
+      // Cegah resume berulang dari pageshow.
+      if (!pausedByVisibilityRef.current) {
+        return;
+      }
+
+      pausedByVisibilityRef.current = false;
+
+      // Kalau sebelumnya pause manual,
+      // tidak perlu diputar otomatis.
+      if (!shouldResumeRef.current) {
+        return;
+      }
+
       shouldResumeRef.current = false;
 
       try {
@@ -109,7 +93,7 @@ function App() {
         if (playPromise?.catch) {
           playPromise.catch((error) => {
             console.warn(
-              "Musik gagal dilanjutkan otomatis:",
+              "Musik gagal dilanjutkan:",
               error
             );
 
@@ -126,10 +110,6 @@ function App() {
       }
     }
 
-    // ---------------------------------------
-    // DETEKSI VISIBILITY TAB
-    // ---------------------------------------
-
     function handleVisibilityChange() {
       if (document.visibilityState === "hidden") {
         pauseWhenHidden();
@@ -138,23 +118,13 @@ function App() {
       }
     }
 
-    // ---------------------------------------
-    // HALAMAN KELUAR / MASUK DARI CACHE
-    // ---------------------------------------
-
     function handlePageHide() {
       pauseWhenHidden();
     }
 
     function handlePageShow() {
-      if (document.visibilityState === "visible") {
-        resumeWhenVisible();
-      }
+      resumeWhenVisible();
     }
-
-    // =====================================
-    // REGISTER EVENT LISTENERS
-    // =====================================
 
     document.addEventListener(
       "visibilitychange",
@@ -170,10 +140,6 @@ function App() {
       "pageshow",
       handlePageShow
     );
-
-    // =====================================
-    // CLEANUP
-    // =====================================
 
     return () => {
       document.removeEventListener(
@@ -210,7 +176,7 @@ function App() {
       if (playPromise?.catch) {
         playPromise.catch((error) => {
           console.warn(
-            "Musik tidak dapat diputar:",
+            "Musik tidak bisa diputar:",
             error
           );
 
@@ -224,7 +190,7 @@ function App() {
   }
 
   // =========================================
-  // PLAY / PAUSE BUTTON
+  // MUSIC PLAY / PAUSE BUTTON
   // =========================================
 
   function toggleMusic() {
@@ -233,14 +199,10 @@ function App() {
     if (!audio) return;
 
     if (audio.paused) {
-      // Pengguna menekan Play.
       shouldResumeRef.current = false;
-
       startMusic();
     } else {
-      // Pengguna menekan Pause.
       shouldResumeRef.current = false;
-
       audio.pause();
     }
   }
@@ -261,7 +223,7 @@ function App() {
 
     if (!originalCover) return;
 
-    // Buat salinan visual Cover.
+    // Salinan Cover untuk animasi keluar.
     const visualCover = originalCover.cloneNode(true);
 
     visualCover.setAttribute(
@@ -272,7 +234,6 @@ function App() {
     visualCover.style.pointerEvents = "none";
     visualCover.style.zIndex = "10001";
 
-    // Nonaktifkan tombol pada clone.
     const clonedButton =
       visualCover.querySelector("button");
 
@@ -281,15 +242,13 @@ function App() {
       clonedButton.tabIndex = -1;
     }
 
-    // Pasang clone di luar root React.
     document.body.appendChild(visualCover);
 
-    // Pastikan style awal diterapkan.
+    // Pastikan browser menerapkan style awal.
     void visualCover.offsetWidth;
 
     let fallbackTimer;
 
-    // Hapus salinan setelah animasi.
     function cleanup() {
       window.clearTimeout(fallbackTimer);
       visualCover.remove();
@@ -309,12 +268,10 @@ function App() {
       handleAnimationEnd
     );
 
-    // Jalankan animasi yang ada di App.css.
     visualCover.classList.add(
       "invite-cover--opening"
     );
 
-    // Timer hanya sebagai pengaman.
     fallbackTimer = window.setTimeout(
       cleanup,
       COVER_FALLBACK_MS
@@ -326,7 +283,9 @@ function App() {
   // =========================================
 
   function handleOpenInvitation() {
-    if (isOpened || openingRef.current) return;
+    if (isOpened || openingRef.current) {
+      return;
+    }
 
     openingRef.current = true;
 
@@ -334,19 +293,19 @@ function App() {
       playCoverExitAnimation();
     } catch (error) {
       console.warn(
-        "Animasi Cover gagal dijalankan:",
+        "Animasi Cover gagal:",
         error
       );
     }
 
-    // Pastikan scroll tidak terkunci.
+    // Lepaskan scroll lock.
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
 
-    // Langsung tampilkan halaman utama.
+    // Hero langsung muncul di belakang clone.
     setIsOpened(true);
 
-    // Mulai musik dari interaksi pengguna.
+    // Musik dimulai dari klik pengguna.
     startMusic();
   }
 
@@ -370,23 +329,20 @@ function App() {
 
       {!isOpened ? (
         // ===================================
-        // COVER
+        // COVER — HANYA SATU
         // ===================================
 
-        <Cover
-          onOpen={handleOpenInvitation}
-        />
+        <Cover onOpen={handleOpenInvitation} />
       ) : (
         <>
-          {/* GLOBAL FIXED BACKGROUND */}
-          <div
-            className="global-background"
-            aria-hidden="true"
-          />
+          {/* BACKGROUND SLIDESHOW */}
+          <BackgroundSlideshow />
 
           {/* MAIN INVITATION */}
           <div className="invitation-layout">
+
             <main className="main-invitation">
+
               <Hero />
 
               <Couple />
@@ -404,10 +360,12 @@ function App() {
 
               <WeddingWishes />
 
+              {/* SECTION PALING AKHIR */}
               <Closing />
+
             </main>
 
-            {/* FLOATING MUSIC CONTROL */}
+            {/* FLOATING MUSIC BUTTON */}
             <button
               type="button"
               className={`music-toggle ${
@@ -432,6 +390,7 @@ function App() {
                 <VolumeX size={20} />
               )}
             </button>
+
           </div>
         </>
       )}
